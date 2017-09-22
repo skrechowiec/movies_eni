@@ -1,0 +1,19 @@
+{% extends'MoviesBundle::base.html.twig' %}
+
+{% block script %}
+    <script src="{{ asset('js/app.js')}}">
+
+    </script>
+{% endblock %}
+
+{% block title %}{ event.title }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <h1>Bienvenue sur Movies</h1>
+        <img src="../media/{{ movies.imdbId }}.jpg" alt="{{ movies.title }}" style="width:304px;height:228px;">
+        {{ movies.title }}<br>
+        {{ movies.year }}<br>
+        {{ movies.cast }}<br>
+        {{ movies.plot }}<br>
+        {{ movies.votes }}<br>
+{% endblock %}

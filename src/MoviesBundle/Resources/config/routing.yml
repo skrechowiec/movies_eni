@@ -1,3 +1,8 @@
 movies_homepage:
     path:     /
     defaults: { _controller: MoviesBundle:Default:index }
+detailMovies:
+    path:     /detail/{id}
+    defaults: { _controller: MoviesBundle:Default:detail }
+    requirements:
+              id: '\d+'

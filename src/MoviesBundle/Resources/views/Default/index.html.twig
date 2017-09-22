@@ -11,6 +11,8 @@
 {% block content %}
     <h1>Bienvenue sur Movies</h1>
     {% for movie in movies %}
-        <img src="media/{{ movie.imdbId }}.jpg" alt="{{ movie.title }}" style="width:304px;height:228px;">
+        <a href="{{ path('detailMovies',{'id': movie.id }) }}">
+            <img src="media/{{ movie.imdbId }}.jpg" alt="{{ movie.title }}" style="width:304px;height:228px;">
+        </a>
     {% endfor %}
 {% endblock %}
