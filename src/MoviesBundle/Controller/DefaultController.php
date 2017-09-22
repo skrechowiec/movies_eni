@@ -7,11 +7,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DefaultController extends Controller
 {
-    /**
-     * @Route("/")
-     */
     public function indexAction()
     {
-        return $this->render('MoviesBundle:Default:index.html.twig');
+        //le repository sert à faire des SELECT dans cette table
+        $repo = $this->getDoctrine()->getRepository('MoviesBundle:Movie');
+        $movies = $repo->findUpMovies();
+        return $this->render('MoviesBundle:Default:index.html.twig', [
+            "movies" => $movies
+        ]);
     }
 }

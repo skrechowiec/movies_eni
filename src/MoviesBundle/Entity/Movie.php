@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace MoviesBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Movie
  *
  * @ORM\Table(name="movie")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\MovieRepository")
+ * @ORM\Entity(repositoryClass="MoviesBundle\Repository\MovieRepository")
  */
 class Movie
 {
@@ -117,7 +117,7 @@ class Movie
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Genre", inversedBy="movies")
+     * @ORM\ManyToMany(targetEntity="MoviesBundle\Entity\Genre", inversedBy="movies")
      */
     private $genres;
 
@@ -456,11 +456,11 @@ class Movie
     /**
      * Add genre
      *
-     * @param \AppBundle\Entity\Genre $genre
+     * @param \MoviesBundle\Entity\Genre $genre
      *
      * @return Movie
      */
-    public function addGenre(\AppBundle\Entity\Genre $genre)
+    public function addGenre(\MoviesBundle\Entity\Genre $genre)
     {
         $this->genres[] = $genre;
 
@@ -470,9 +470,9 @@ class Movie
     /**
      * Remove genre
      *
-     * @param \AppBundle\Entity\Genre $genre
+     * @param \MoviesBundle\Entity\Genre $genre
      */
-    public function removeGenre(\AppBundle\Entity\Genre $genre)
+    public function removeGenre(\MoviesBundle\Entity\Genre $genre)
     {
         $this->genres->removeElement($genre);
     }

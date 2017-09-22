@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace MoviesBundle\Repository;
 
 /**
  * MovieRepository
@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class MovieRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findUpMovies()
+    {
+        $movies = $this->findBy([],["rating" => 'DESC'],50);
+        return $movies;
+    }
 }
