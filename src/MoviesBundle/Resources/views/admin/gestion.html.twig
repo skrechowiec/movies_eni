@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Bienvenue sur La gestion des films</h1>
-    <a href="#" >nouveau film</a>
+    <a href="{{ path('CreatedMovies') }}" >nouveau film</a>
     <table border=1>
     <tr align=center>
         <td>Nom du film</td>
@@ -26,7 +26,7 @@
                 <td>{{ movie.directors }}</td>
                 <td>{{ movie.writers }}</td>
                 <td>{{ movie.plot }}</td>
-                <td><a href="#" class="btn btn-default" >
+                <td><a href="{{ path('editMovies', {'id': movie.Id}) }}" class="btn btn-default" >
                         <span class="glyphicon glyphicon-edit" ></span></a></td>
                 <td><a href="#" class="btn btn-danger" >
                         <span class="glyphicon glyphicon-remove" ></span></a></td>

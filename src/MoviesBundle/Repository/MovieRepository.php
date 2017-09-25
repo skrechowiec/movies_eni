@@ -15,4 +15,9 @@ class MovieRepository extends \Doctrine\ORM\EntityRepository
         $movies = $this->findBy([],["rating" => 'DESC'],50);
         return $movies;
     }
+    public function findUpAllMovies()
+    {
+        $movies = $this->findBy([],["rating" => 'DESC']);
+        return $movies;
+    }
 }

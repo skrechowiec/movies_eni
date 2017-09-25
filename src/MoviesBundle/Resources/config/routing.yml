@@ -4,8 +4,14 @@ movies_homepage:
 detailMovies:
     path:     /detail/{id}
     defaults: { _controller: MoviesBundle:Movies:detail }
-    requirements:
-              id: '\d+'
 AdminMovies:
     path:     /admin/gestion-des-films
     defaults: { _controller: MoviesBundle:AdminMovies:gestion }
+CreatedMovies:
+    path:     /admin/creation-de-film
+    defaults: { _controller: MoviesBundle:AdminMovies:create }
+editMovies:
+    path:     /modification/{id}
+    defaults: { _controller: MoviesBundle:AdminMovies:edit }
+
+
