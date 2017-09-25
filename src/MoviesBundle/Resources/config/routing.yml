@@ -13,5 +13,8 @@ CreatedMovies:
 editMovies:
     path:     /modification/{id}
     defaults: { _controller: MoviesBundle:AdminMovies:edit }
+deleteMovies:
+    path:     /suppression/{id}
+    defaults: { _controller: MoviesBundle:AdminMovies:delete }
 
 

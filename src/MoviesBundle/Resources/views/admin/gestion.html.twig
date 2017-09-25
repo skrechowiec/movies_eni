@@ -28,7 +28,7 @@
                 <td>{{ movie.plot }}</td>
                 <td><a href="{{ path('editMovies', {'id': movie.Id}) }}" class="btn btn-default" >
                         <span class="glyphicon glyphicon-edit" ></span></a></td>
-                <td><a href="#" class="btn btn-danger" >
+                <td><a href="{{ path('deleteMovies', {'id': movie.Id}) }}" class="btn btn-danger" >
                         <span class="glyphicon glyphicon-remove" ></span></a></td>
 
             </tr>

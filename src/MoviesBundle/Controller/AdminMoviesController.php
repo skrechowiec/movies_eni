@@ -11,6 +11,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminMoviesController extends Controller
 {
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('MoviesBundle:Movie');
+        $movie = $repo->find($id);
+
+        $em->remove($movie);
+        $this->addFlash("success", "le film ".$movie->getTitle()." a bien été supprimé");
+        $em->flush();
+        return $this->redirectToRoute("AdminMovies");
+    }
     public function editAction($id, Request $request)
     {
         $repo = $this->getDoctrine()->getRepository('MoviesBundle:Movie');
@@ -23,7 +34,7 @@ class AdminMoviesController extends Controller
                 $em->persist($movie);
                 $em->flush();
 
-                $this->addFlash("success", "votre événement a bien été modifié");
+                $this->addFlash("success", "votre film a bien été modifié");
                 return $this->redirectToRoute("detailMovies", ["id" => $movie->getId()]);
 
             }

@@ -16,7 +16,7 @@ class MovieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, ["label" => "Nom de l'événement" ])
+            ->add('title', null, ["label" => "Titre du film" ])
             ->add('year', null ,["label" => "Année de production"])
             ->add('cast',null, ["label" => "Acteurs"])
             ->add('directors',null, ["label" => "Réalisateur"])

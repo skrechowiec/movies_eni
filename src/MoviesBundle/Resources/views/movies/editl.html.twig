@@ -4,5 +4,10 @@
 
 {% block content %}
     <h1>Bienvenue sur Movies</h1>
+    <div id="imageTitre">
+    <img src="{{ asset('media/'~movie.imdbId~'.jpg') }}" alt="{{ movie.title }}" style="width: 30%;">
+    </div>
+    <div id="formTitre">
     {{ form(form, {'attr':{'novalidate':'novalidate'}}) }}
+    </div>
 {% endblock %}
