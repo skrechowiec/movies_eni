@@ -2,6 +2,7 @@
 
 namespace MoviesBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,6 +18,11 @@ class MovieType extends AbstractType
     {
         $builder
             ->add('title', null, ["label" => "Titre du film" ])
+            ->add('genres', EntityType::class, [
+                "class" => "MoviesBundle\Entity\Genre",
+                "choice_label" => "name",
+                "required" => true,
+                "multiple"  => true])
             ->add('year', null ,["label" => "Année de production"])
             ->add('cast',null, ["label" => "Acteurs"])
             ->add('directors',null, ["label" => "Réalisateur"])

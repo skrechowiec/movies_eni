@@ -58,7 +58,7 @@ class AdminMoviesController extends Controller
         $movie = new Movie();
         $movie->setYear("1990");
         $movie->setDateCreated(new \DateTime('now'));
-        $movie->setImdbId("Image Non Trouvée");
+        $movie->setImdbId(time());
         $movie->setRating("5");
         $movie->setVotes("0");
         $movie->setDateModified(new \DateTime('now'));

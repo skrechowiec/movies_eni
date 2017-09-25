@@ -1,18 +1,21 @@
 {% extends'MoviesBundle::base.html.twig' %}
 
-{% block title %}{{ movies.title }} | {{ parent() }}{% endblock %}
+{% block title %}{{ movie.title }} | {{ parent() }}{% endblock %}
 
 {% block content %}
     <h1>Bienvenue sur Movies</h1>
-        <img src="{{ asset('media/'~movies.imdbId~'.jpg') }}" alt="{{ movies.title }}" ><br>
-        {{ movies.title }}<br>
-        {{ movies.year }}<br>
-        {{ movies.cast }}<br>
-        {{ movies.plot }}<br>
-        {{ movies.votes }}<br>
-        {{ movies.trailerId }}<br>
+        <h2>Titre du film{{ movie.title }}</h2><br>
+        <img src="{{ asset('media/'~movie.imdbId~'.jpg') }}" alt="{{ movie.title }}" ><br>
+        {{ movie.year }}<br>
+        {{ movie.cast }}<br>
+        {{ movie.plot }}<br>
+   {%  for genre in movie.genres %}
+        {{ genre.name }}<br>
+    {% endfor %}
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ movies.trailerId }}" frameborder="0" allowfullscreen>
-
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ movie.trailerId }}" frameborder="0" allowfullscreen>
     </iframe><br>
+
+    {{ form(form, {'attr':{'novalidate':'novalidate'}}) }}
+
 {% endblock %}
