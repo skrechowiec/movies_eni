@@ -1,0 +1,37 @@
+{% extends'MoviesBundle::base.html.twig' %}
+
+{% block title %}{{ parent() }} | Accueil{% endblock %}
+
+{% block content %}
+    <h1>Bienvenue sur La gestion des films</h1>
+    <a href="#" >nouveau film</a>
+    <table border=1>
+    <tr align=center>
+        <td>Nom du film</td>
+        <td>Affiche</td>
+        <td>Année</td>
+        <td>Acteurs</td>
+        <td>Réalisateur</td>
+        <td>Scénaristes</td>
+        <td>Histoire</td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% for movie in movies %}
+            <tr>
+                <td>{{ movie.title }}</td>
+                <td align=center width = 5%><img src="{{ asset('media/'~movie.imdbId~'.jpg') }}" alt="{{ movie.title }}" style="width: 80%;"></td>
+                <td>{{ movie.year }}</td>
+                <td>{{ movie.cast }}</td>
+                <td>{{ movie.directors }}</td>
+                <td>{{ movie.writers }}</td>
+                <td>{{ movie.plot }}</td>
+                <td><a href="#" class="btn btn-default" >
+                        <span class="glyphicon glyphicon-edit" ></span></a></td>
+                <td><a href="#" class="btn btn-danger" >
+                        <span class="glyphicon glyphicon-remove" ></span></a></td>
+
+            </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

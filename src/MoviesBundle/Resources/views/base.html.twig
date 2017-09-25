@@ -13,10 +13,16 @@
 <body>
 <div class="container">
     <header>
-
+        <nav>
+            <ul>
+                <li><a href="{{ path('movies_homepage') }}">Les films</a></li>
+                <li><a href="{{ path('AdminMovies') }}">Gestion des films</a></li>
+            </ul>
+        </nav>
     </header>
     {% block content %}{% endblock %}
     <footer>
+
     </footer>
 </div>
 </body>
