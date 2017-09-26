@@ -2,6 +2,10 @@
 
 namespace MoviesBundle\Repository;
 
+use MoviesBundle\Form\ReviewType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
 /**
  * MovieRepository
  *
@@ -10,9 +14,10 @@ namespace MoviesBundle\Repository;
  */
 class MovieRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findUpMovies()
+    public function findUpMovies($page)
     {
-        $movies = $this->findBy([],["rating" => 'DESC'],50);
+        $a = ($page -1 ) * 18;
+        $movies = $this->findBy([],["rating" => 'DESC'],18, $a);
         return $movies;
     }
     public function findUpAllMovies()
@@ -20,4 +25,13 @@ class MovieRepository extends \Doctrine\ORM\EntityRepository
         $movies = $this->findBy([],["rating" => 'DESC']);
         return $movies;
     }
+    public function countByAccount()
+    {
+        $qb = $this->createQueryBuilder('e');
+
+        $qb ->select($qb->expr()->count('e'));
+
+        return (int) $qb->getQuery()->getSingleScalarResult();
+    }
+
 }

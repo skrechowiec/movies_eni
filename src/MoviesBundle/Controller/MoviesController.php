@@ -36,15 +36,28 @@ class MoviesController extends Controller
             "form" => $form->createView(),
             "movie" => $movie
         ]);
-    }public function indexAction()
+    }
+    public function indexAction($page = 1)
     {
+        $pageSuivante = $page + 1;
+        $pagePrecedente = $page - 1;
         //le repository sert à faire des SELECT dans cette table
         $repo = $this->getDoctrine()->getRepository('MoviesBundle:Movie');
-        $movies = $repo->findUpMovies();
+
+        $totalMovies = (int)((($repo->countByAccount())/18)+1);
+
+        $movies = $repo->findUpMovies($page);
         return $this->render('MoviesBundle:Default:index.html.twig', [
-            "movies" => $movies
+            "movies" => $movies,
+            "pagePrecedent" => $pagePrecedente,
+            "pageSuivante" => $pageSuivante,
+            "page" => $page,
+            "total" => $totalMovies
         ]);
     }
+
+
+
 }
 
 

@@ -3,7 +3,6 @@
 {% block title %}{{ movie.title }} | {{ parent() }}{% endblock %}
 
 {% block content %}
-    <h1>Bienvenue sur Movies</h1>
     <h2 id="titreH2">{{ movie.title }}</h2>
     <aside>
         <img src="{{ asset('media/'~movie.imdbId~'.jpg') }}" alt="{{ movie.title }}" ><br>

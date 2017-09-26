@@ -3,10 +3,34 @@
 {% block title %}{{ parent() }} | Accueil{% endblock %}
 
 {% block content %}
-    <h1>Bienvenue sur Movies</h1>
-    {% for movie in movies %}
+{% for movie in movies %}
         <a href="{{ path('detailMovies',{'id': movie.id }) }}">
             <img src="{{ asset('media/'~movie.imdbId~'.jpg') }}" alt="{{ movie.title }}" style="width: 15%;">
         </a>
     {% endfor %}
+    {% if pagePrecedent < 1  %}
+    <nav aria-label="navigation">
+        <ul class="pager">
+            <li></li>
+            <li>Page : {{ page }}/{{ total }}</li>
+            <li class="next"><a href="{{ path('movies_homepage', {'page': pageSuivante }) }}" title="Suivant">Suivant</a></li>
+        </ul>
+    </nav>
+    {% elseif pageSuivante >= total+1  %}
+        <nav aria-label="navigation">
+            <ul class="pager">
+                <li class="previous"><a href="{{ path('movies_homepage', {'page': pagePrecedent }) }}" title="Précédent">Précédent</a></li>
+                <li>Page : {{ page }}/{{ total }}</li>
+                <li></li>
+            </ul>
+        </nav>
+     {% else %}
+        <nav aria-label="navigation">
+            <ul class="pager">
+            <li class="previous"><a href="{{ path('movies_homepage', {'page': pagePrecedent }) }}" title="Précédent">Précédent</a></li>
+            <li>Page : {{ page }}/{{ total }}</li>
+            <li class="next"><a href="{{ path('movies_homepage', {'page': pageSuivante }) }}" title="Suivant">Suivant</a></li>
+        </ul>
+    </nav>
+    {% endif %}
 {% endblock %}
