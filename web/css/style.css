@@ -1,6 +1,14 @@
 h1{
     color: red;
 }
-.imageTitre{
+#titreH2 {
+    width: 100%;
+    border-width:2px;
+    border-style:ridge;
+    border-color:black;
+    text-align: center;
     float: left;
+}
+aside{
+    float:left;clear:both;
 }
