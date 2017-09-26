@@ -29,3 +29,5 @@ EditReview:
 DeleteReview:
     path:     /admin/suppression-de-critique/{id}
     defaults: { _controller: MoviesBundle:AdminReviewMovies:deleteReview }
+
+

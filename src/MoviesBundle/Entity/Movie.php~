@@ -116,14 +116,14 @@ class Movie
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="MoviesBundle\Entity\Genre", mappedBy="movies")
+     * @ORM\ManyToMany(targetEntity="MoviesBundle\Entity\Genre", inversedBy="movies")
      */
     private $genres;
 
     /**
      * @var arrayCollection
      *
-     * @ORM\OneToMany(targetEntity="MoviesBundle\Entity\Review", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="MoviesBundle\Entity\Review", mappedBy="film", cascade={"remove"})
      */
     private $critiques;
 
@@ -490,5 +490,39 @@ class Movie
     public function getGenres()
     {
         return $this->genres;
+    }
+
+    /**
+     * Add critique
+     *
+     * @param \MoviesBundle\Entity\Review $critique
+     *
+     * @return Movie
+     */
+    public function addCritique(\MoviesBundle\Entity\Review $critique)
+    {
+        $this->critiques[] = $critique;
+
+        return $this;
+    }
+
+    /**
+     * Remove critique
+     *
+     * @param \MoviesBundle\Entity\Review $critique
+     */
+    public function removeCritique(\MoviesBundle\Entity\Review $critique)
+    {
+        $this->critiques->removeElement($critique);
+    }
+
+    /**
+     * Get critiques
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCritiques()
+    {
+        return $this->critiques;
     }
 }

@@ -52,6 +52,7 @@ class Review
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="Movie", inversedBy="critiques")
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $film;
 
@@ -160,5 +161,34 @@ class Review
     public function getPseudo()
     {
         return $this->pseudo;
+    }
+
+    /**
+     * Set film
+     *
+     * @param \MoviesBundle\Entity\Movie $film
+     *
+     * @return Review
+     */
+    public function setFilm(\MoviesBundle\Entity\Movie $film = null)
+    {
+        $this->film = $film;
+
+        return $this;
+    }
+
+    /**
+     * Get film
+     *
+     * @return \MoviesBundle\Entity\Movie
+     */
+    public function getFilm()
+    {
+        return $this->film;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }
