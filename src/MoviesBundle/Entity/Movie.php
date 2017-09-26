@@ -123,7 +123,7 @@ class Movie
     /**
      * @var arrayCollection
      *
-     * @ORM\OneToMany(targetEntity="MoviesBundle\Entity\Review", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="MoviesBundle\Entity\Review", mappedBy="film", cascade={"remove"})
      */
     private $critiques;
 

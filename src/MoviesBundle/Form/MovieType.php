@@ -22,6 +22,7 @@ class MovieType extends AbstractType
                 "class" => "MoviesBundle\Entity\Genre",
                 "choice_label" => "name",
                 "required" => true,
+                "expanded" => true,
                 "multiple"  => true])
             ->add('year', null ,["label" => "Année de production"])
             ->add('cast',null, ["label" => "Acteurs"])

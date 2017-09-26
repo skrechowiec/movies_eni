@@ -22,7 +22,7 @@ class AdminMoviesController extends Controller
         $em->flush();
         return $this->redirectToRoute("AdminMovies");
     }
-    public function editAction($id, Request $request)
+    public function editReviewAction($id, Request $request)
     {
         $repo = $this->getDoctrine()->getRepository('MoviesBundle:Movie');
         $movie = $repo->find($id);
@@ -34,7 +34,7 @@ class AdminMoviesController extends Controller
                 $em->persist($movie);
                 $em->flush();
 
-                $this->addFlash("success", "votre film a bien été modifié");
+                $this->addFlash("success", "votre film ".$movie->getTitle()." a bien été modifié");
                 return $this->redirectToRoute("detailMovies", ["id" => $movie->getId()]);
 
             }

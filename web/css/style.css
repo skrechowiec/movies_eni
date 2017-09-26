@@ -12,3 +12,7 @@ h1{
 aside{
     float:left;clear:both;
 }
+#formulaireCritique{
+    clear:both;
+    text-align: center;
+}

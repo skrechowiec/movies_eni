@@ -10,4 +10,10 @@ namespace MoviesBundle\Repository;
  */
 class ReviewRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findUpAllReview()
+    {
+        $reviews = $this->findBy([],["film" => 'DESC']);
+        return $reviews;
+    }
+
 }

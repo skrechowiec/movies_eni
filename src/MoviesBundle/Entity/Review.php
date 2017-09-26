@@ -52,6 +52,7 @@ class Review
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="Movie", inversedBy="critiques")
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     private $film;
 

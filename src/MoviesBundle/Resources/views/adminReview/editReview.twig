@@ -1,0 +1,10 @@
+{% extends'MoviesBundle::base.html.twig' %}
+
+{% block title %}{{ review.titre }} | {{ parent() }}{% endblock %}
+
+{% block content %}
+    <h1>Bienvenue sur Movies</h1>
+    <div id="formTitre">
+    {{ form(form, {'attr':{'novalidate':'novalidate'}}) }}
+    </div>
+{% endblock %}

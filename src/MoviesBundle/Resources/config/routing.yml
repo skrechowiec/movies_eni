@@ -4,6 +4,7 @@ movies_homepage:
 detailMovies:
     path:     /detail/{id}
     defaults: { _controller: MoviesBundle:Movies:detail }
+
 AdminMovies:
     path:     /admin/gestion-des-films
     defaults: { _controller: MoviesBundle:AdminMovies:gestion }
@@ -11,10 +12,18 @@ CreatedMovies:
     path:     /admin/creation-de-film
     defaults: { _controller: MoviesBundle:AdminMovies:create }
 editMovies:
-    path:     /modification/{id}
+    path:     /admin/modification-de-film/{id}
     defaults: { _controller: MoviesBundle:AdminMovies:edit }
 deleteMovies:
-    path:     /suppression/{id}
+    path:     /admin/suppression-de-film/{id}
     defaults: { _controller: MoviesBundle:AdminMovies:delete }
 
-
+Review:
+    path:     /admin/visualisation-des-critiques
+    defaults:  { _controller: MoviesBundle:AdminReviewMovies:liste}
+EditReview:
+    path:     /admin/modification-de-critique/{id}
+    defaults: { _controller: MoviesBundle:AdminReviewMovies:editReview }
+DeleteReview:
+    path:     /admin/suppression-de-critique/{id}
+    defaults: { _controller: MoviesBundle:AdminReviewMovies:deleteReview }

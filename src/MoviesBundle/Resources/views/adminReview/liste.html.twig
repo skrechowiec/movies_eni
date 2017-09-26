@@ -1,0 +1,35 @@
+{% extends'MoviesBundle::base.html.twig' %}
+
+{% block title %}{{ parent() }} | Accueil{% endblock %}
+
+{% block content %}
+    <h1>Bienvenue sur Movies</h1>
+    <nav>
+        <ul class="nav nav-pills">
+            <li><a href="{{ path('Review') }}" >les critiques</a></li>
+        </ul>
+    </nav>
+    <table border="1">
+        <tr>
+            <td>Film</td>
+            <td>titre</td>
+            <td>critique</td>
+            <td>note</td>
+            <td>pseudo</td>
+        </tr>
+        {% for review in reviews %}
+            <tr>
+                <td>{{ review.film.title }}</td>
+                <td>{{ review.titre }}</td>
+                <td>{{ review.critique }}</td>
+                <td>{{ review.note }}</td>
+                <td>{{ review.pseudo }}</td>
+                <td><a href="{{ path('EditReview', {'id': review.Id}) }}" class="btn btn-default" >
+                        <span class="glyphicon glyphicon-edit" ></span></a></td>
+                <td><a href="{{ path('DeleteReview', {'id': review.Id}) }}" class="btn btn-danger" >
+                        <span class="glyphicon glyphicon-remove" ></span></a></td>
+            </tr>
+        {% endfor %}
+
+    </table>
+{% endblock %}

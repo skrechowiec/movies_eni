@@ -5,19 +5,20 @@
 {% block content %}
     <h1>Bienvenue sur Movies</h1>
     <h2 id="titreH2">{{ movie.title }}</h2>
-     <aside>
+    <aside>
         <img src="{{ asset('media/'~movie.imdbId~'.jpg') }}" alt="{{ movie.title }}" ><br>
-        </aside>
+    </aside>
     <i>Année de sortie : </i>{{ movie.year }}<br>
     <i>Acteurs</i> : {{ movie.cast }}<br>
     <i>Histoire</i> : {{ movie.plot }}<br>
-   {%  for genre in movie.genres %}
-       <i>Genre</i> : {{ genre.name }}<br>
+    {%  for genre in movie.genres %}
+        <i>Genre</i> : {{ genre.name }}<br>
     {% endfor %}
-
     <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ movie.trailerId }}" frameborder="0" allowfullscreen>
     </iframe><br>
-
-    {{ form(form, {'attr':{'novalidate':'novalidate'}}) }}
-
+    <div id="formulaireCritique">
+    {% block formulaire %}
+        {{ form(form, {'attr':{'novalidate':'novalidate'}}) }}
+    {% endblock %}
+    </div>
 {% endblock %}
