@@ -8,29 +8,41 @@
             <img src="{{ asset('media/'~movie.imdbId~'.jpg') }}" alt="{{ movie.title }}" style="width: 15%;">
         </a>
     {% endfor %}
-    {% if pagePrecedent < 1  %}
     <nav aria-label="navigation">
         <ul class="pager">
-            <li></li>
-            <li>Page : {{ page }}/{{ total }}</li>
-            <li class="next"><a href="{{ path('movies_homepage', {'page': pageSuivante }) }}" title="Suivant">Suivant</a></li>
-        </ul>
-    </nav>
-    {% elseif pageSuivante >= total+1  %}
-        <nav aria-label="navigation">
-            <ul class="pager">
-                <li class="previous"><a href="{{ path('movies_homepage', {'page': pagePrecedent }) }}" title="Précédent">Précédent</a></li>
-                <li>Page : {{ page }}/{{ total }}</li>
+        {% if pagePrecedent < 1  %}
                 <li></li>
-            </ul>
-        </nav>
-     {% else %}
-        <nav aria-label="navigation">
-            <ul class="pager">
-            <li class="previous"><a href="{{ path('movies_homepage', {'page': pagePrecedent }) }}" title="Précédent">Précédent</a></li>
-            <li>Page : {{ page }}/{{ total }}</li>
-            <li class="next"><a href="{{ path('movies_homepage', {'page': pageSuivante }) }}" title="Suivant">Suivant</a></li>
+                {% for page2 in page..(page + 5) %}
+                    {% if page2|lower is sameas (page|lower) %}
+                        <a href="{{ path('movies_homepage', {'page': page2 }) }}" id="pageColor">{{ page2 }}</a>
+                    {% else %}
+                        <a href="{{ path('movies_homepage', {'page': page2 }) }}" >{{ page2 }}</a>
+                    {% endif %}
+                {% endfor %}...
+                <li class="next"><a href="{{ path('movies_homepage', {'page': pageSuivante }) }}" title="Suivant">Suivant</a></li>
+        {% elseif pageSuivante >= total+1  %}
+                <li class="previous"><a href="{{ path('movies_homepage', {'page': pagePrecedent }) }}" title="Précédent">Précédent</a></li>
+                ...
+                {% for page2 in (page - 4)..(total) %}
+                    {% if page2|lower is sameas (page|lower) %}
+                        <a href="{{ path('movies_homepage', {'page': page2 }) }}" id="pageColor">{{ page2 }}</a>
+                    {% else %}
+                        <a href="{{ path('movies_homepage', {'page': page2 }) }}" >{{ page2 }}</a>
+                    {% endif %}
+                {% endfor %}
+                <li></li>
+        {% else %}
+                <li class="previous"><a href="{{ path('movies_homepage', {'page': pagePrecedent }) }}" title="Précédent">Précédent</a></li>
+                ...
+                {% for page2 in (page-1)..(page + 5) %}
+                    {% if page2|lower is sameas (page|lower) %}
+                        <a href="{{ path('movies_homepage', {'page': page2 }) }}" id="pageColor">{{ page2 }}</a>
+                    {% else %}
+                        <a href="{{ path('movies_homepage', {'page': page2 }) }}" >{{ page2 }}</a>
+                    {% endif %}
+                {% endfor %}...
+                <li class="next"><a href="{{ path('movies_homepage', {'page': pageSuivante }) }}" title="Suivant">Suivant</a></li>
+        {% endif %}
         </ul>
     </nav>
-    {% endif %}
 {% endblock %}
